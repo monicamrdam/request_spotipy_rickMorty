@@ -6,7 +6,7 @@ class SpotifyClient:
         pass
 
     @staticmethod
-    def authorization():
+    def authorization(name_artist):
         client_id = Config.CLIENT_ID
         client_secret = Config.CLIENTE_SECRET
 
@@ -27,11 +27,11 @@ class SpotifyClient:
         headers = {
             'Authorization': 'Bearer {}'.format(access_token)
         }
-
-        featured_playlists_endpoint = '?q=estopa&type=track'
+        name=str(name_artist)
+        featured_playlists_endpoint = '?q='+ name +'&type=track'
         featured_playlists_url = ''.join([base_url, featured_playlists_endpoint])
+        print (featured_playlists_url)
 
         response = requests.get(featured_playlists_url, headers=headers)
-
-
+        #response.json()['tracks']['items'][i]['name']
         return response.json()['tracks']['items']
