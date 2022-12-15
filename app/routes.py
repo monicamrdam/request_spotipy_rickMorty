@@ -16,4 +16,4 @@ def home():
 @app.route('/artist')
 def spotify_client():
     name= request.args.get('name', type=str)
-    return SpotifyService.get_name(name)
+    return SpotifyService.get_artist_popularity(name)

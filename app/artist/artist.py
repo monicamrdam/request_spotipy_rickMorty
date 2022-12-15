@@ -1,6 +1,4 @@
 class Artist:
-    def __init__(self, name: str, popularity: int, uri: str,gender:[] ):
+    def __init__(self, name: str, popularity: int ):
         self.name=name
         self.popularity = popularity
-        self.uri=uri
-        self.gender=gender
