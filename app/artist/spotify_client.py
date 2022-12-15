@@ -11,28 +11,31 @@ class SpotifyClient:
         client_secret = Config.CLIENTE_SECRET
 
         auth_url = 'https://accounts.spotify.com/api/token'
-
         data = {
             'grant_type': 'client_credentials',
             'client_id': client_id,
             'client_secret': client_secret,
         }
-
         auth_response = requests.post(auth_url, data=data)
-
         access_token = auth_response.json().get('access_token')
-
-        base_url = Config.URL_SPOTIFY
-
         headers = {
             'Authorization': 'Bearer {}'.format(access_token)
         }
+
+        base_url = Config.URL_Search
         name=str(name_artist)
-        featured_playlists_endpoint = '?q='+ name +'&type=track'
+        featured_playlists_endpoint = '?q='+ name +'&type=artist'
         featured_playlists_url = ''.join([base_url, featured_playlists_endpoint])
         print (featured_playlists_url)
-
         response = requests.get(featured_playlists_url, headers=headers)
-        #response.json()['tracks']['items'][i]['name']
+        id_artist=response.json()['artists']['items'][0]['id']
 
-        return response.json()['tracks']['items']
+        print(id_artist)
+        base_url_artist = Config.URL_Artist
+        featured_playlists_endpoint = '/'+ id_artist
+        featured_playlists_url_artist = ''.join([base_url_artist, featured_playlists_endpoint])
+        print(featured_playlists_url_artist)
+        response_artist = requests.get(featured_playlists_url_artist, headers=headers)
+
+
+        return response_artist.json()
