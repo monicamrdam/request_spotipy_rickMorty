@@ -6,7 +6,7 @@ class SpotifyClient:
         pass
 
     @staticmethod
-    def authorization(name_artist):
+    def authorization():
         client_id = Config.CLIENT_ID
         client_secret = Config.CLIENTE_SECRET
 
@@ -21,21 +21,27 @@ class SpotifyClient:
         headers = {
             'Authorization': 'Bearer {}'.format(access_token)
         }
+        return headers
+    
+    @staticmethod
+    def url_search(name_artist):
 
         base_url = Config.URL_Search
-        name=str(name_artist)
-        featured_playlists_endpoint = '?q='+ name +'&type=artist'
+        name = str(name_artist)
+        featured_playlists_endpoint = '?q=' + name + '&type=artist'
         featured_playlists_url = ''.join([base_url, featured_playlists_endpoint])
-        print (featured_playlists_url)
-        response = requests.get(featured_playlists_url, headers=headers)
-        id_artist=response.json()['artists']['items'][0]['id']
+        print(featured_playlists_url)
+        response = requests.get(featured_playlists_url, headers=SpotifyClient.authorization())
+        id_artist = response.json()['artists']['items'][0]['id']
+        return id_artist
 
+    @staticmethod
+    def url_artist(name_artist):
+        id_artist= SpotifyClient.url_search(name_artist)
         print(id_artist)
         base_url_artist = Config.URL_Artist
-        featured_playlists_endpoint = '/'+ id_artist
+        featured_playlists_endpoint = '/' + id_artist
         featured_playlists_url_artist = ''.join([base_url_artist, featured_playlists_endpoint])
         print(featured_playlists_url_artist)
-        response_artist = requests.get(featured_playlists_url_artist, headers=headers)
-
-
+        response_artist = requests.get(featured_playlists_url_artist, headers=SpotifyClient.authorization())
         return response_artist.json()

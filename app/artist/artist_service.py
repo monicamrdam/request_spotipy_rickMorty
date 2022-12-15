@@ -9,7 +9,7 @@ class SpotifyService:
     @staticmethod
     def get_artist_popularity(name_artist):
         datos_artista={}
-        datos = SpotifyClient.authorization(name_artist)
+        datos = SpotifyClient.url_artist(name_artist)
         artista=Artist(datos['name'], datos['popularity'])
         datos_artista={
             'name': artista.name,
