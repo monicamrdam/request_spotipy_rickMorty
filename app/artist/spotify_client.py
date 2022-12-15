@@ -34,4 +34,5 @@ class SpotifyClient:
 
         response = requests.get(featured_playlists_url, headers=headers)
         #response.json()['tracks']['items'][i]['name']
+
         return response.json()['tracks']['items']
