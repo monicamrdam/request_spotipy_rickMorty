@@ -1,6 +1,6 @@
 from app.artist.spotify_client import SpotifyClient
 from app.artist.artist import Artist
-
+from app.artist.artist_topTracks import Top_Tracks
 
 class SpotifyService:
     def __init__(self):
@@ -8,11 +8,20 @@ class SpotifyService:
 
     @staticmethod
     def get_artist_popularity(name_artist):
-        datos_artista={}
-        datos = SpotifyClient.url_artist(name_artist)
-        artista=Artist(datos['name'], datos['popularity'])
-        datos_artista={
-            'name': artista.name,
-            'popularity':artista.popularity
+        all_tracks = []
+        data_artist = SpotifyClient.url_artist(name_artist)
+        data_top_track = SpotifyClient.url_topTrack(name_artist)
+        for track in data_top_track['tracks'][:5]:
+            tracks_data = Top_Tracks(track['name'], track['popularity'])
+            artist_track = {
+                'name': tracks_data.name,
+                'popularity': tracks_data.popularity,
+            }
+            all_tracks.append(artist_track)
+        data_artist=Artist(data_artist['name'], data_artist['popularity'])
+        artist={
+            'name': data_artist.name,
+            'popularity':data_artist.popularity,
+            'popularTracks':all_tracks
         }
-        return datos_artista
+        return artist

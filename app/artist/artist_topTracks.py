@@ -1,5 +1,4 @@
 class Top_Tracks:
-    def __init__(self, name:str, popularity:int, audioSong: str):
+    def __init__(self, name:str, popularity:int):
         self.name = name
         self.popularity= popularity
-        self.audioSong=audioSong
