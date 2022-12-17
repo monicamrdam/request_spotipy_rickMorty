@@ -2,6 +2,7 @@ from app.artist.spotify_client import SpotifyClient
 from app.artist.artist import Artist
 from app.artist.artist_topTracks import Top_Tracks
 
+
 class SpotifyService:
     def __init__(self):
         pass
@@ -18,10 +19,10 @@ class SpotifyService:
                 'popularity': tracks_data.popularity,
             }
             all_tracks.append(artist_track)
-        data_artist=Artist(data_artist['name'], data_artist['popularity'])
-        artist={
+        data_artist = Artist(data_artist['name'], data_artist['popularity'])
+        artist = {
             'name': data_artist.name,
-            'popularity':data_artist.popularity,
-            'popularTracks':all_tracks
+            'popularity': data_artist.popularity,
+            'popularTracks': all_tracks
         }
         return artist

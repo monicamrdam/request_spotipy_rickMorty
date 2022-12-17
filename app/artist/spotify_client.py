@@ -1,5 +1,7 @@
 import requests
 from config import Config
+
+
 class SpotifyClient:
 
     def __init__(self):
@@ -25,7 +27,6 @@ class SpotifyClient:
 
     @staticmethod
     def url_search(name_artist):
-
         base_url = Config.URL_Search
         name = str(name_artist)
         featured_playlists_endpoint = '?q=' + name + '&type=artist'
@@ -37,7 +38,7 @@ class SpotifyClient:
 
     @staticmethod
     def url_artist(name_artist):
-        id_artist= SpotifyClient.url_search(name_artist)
+        id_artist = SpotifyClient.url_search(name_artist)
         print(id_artist)
         base_url_artist = Config.URL_Artist
         featured_playlists_endpoint = '/' + id_artist
@@ -48,11 +49,11 @@ class SpotifyClient:
 
     @staticmethod
     def url_top_track(name_artist):
-        id_artist= SpotifyClient.url_search(name_artist)
+        id_artist = SpotifyClient.url_search(name_artist)
         print(id_artist)
         base_url_artist = Config.URL_Artist
         featured_playlists_endpoint = '/' + id_artist + '/top-tracks?market=ES'
         featured_playlists_url_artist = ''.join([base_url_artist, featured_playlists_endpoint])
         print(featured_playlists_url_artist)
-        response_top_tracks= requests.get(featured_playlists_url_artist, headers=SpotifyClient.authorization())
+        response_top_tracks = requests.get(featured_playlists_url_artist, headers=SpotifyClient.authorization())
         return response_top_tracks.json()
