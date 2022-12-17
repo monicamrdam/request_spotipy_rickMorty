@@ -10,7 +10,7 @@ class SpotifyService:
     def get_artist_popularity(name_artist):
         all_tracks = []
         data_artist = SpotifyClient.url_artist(name_artist)
-        data_top_track = SpotifyClient.url_topTrack(name_artist)
+        data_top_track = SpotifyClient.url_top_track(name_artist)
         for track in data_top_track['tracks'][:5]:
             tracks_data = Top_Tracks(track['name'], track['popularity'])
             artist_track = {
