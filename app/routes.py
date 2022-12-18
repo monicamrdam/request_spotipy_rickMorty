@@ -5,7 +5,7 @@ from app.artist.artist_service import SpotifyService
 from app.character.character_service import RickAndMortyService
 from app.character.rick_and_morty_client import RickAndMortyClient
 from app.character.all_character_service import AllRickAndMortyService
-
+from app.favourites.favourites_service import FavoriteSong
 
 @app.route('/')
 def home():
@@ -15,6 +15,7 @@ def home():
         "Character": 'http://127.0.0.1:5000/character',
         "AllCharacter": 'http://127.0.0.1:5000/all_character',
         "Episode": 'http://127.0.0.1:5000/episode',
+        "Favourites": 'http://127.0.0.1:5000/favourites',
 
     }
     return jsonify(message)
@@ -44,3 +45,8 @@ def rickandmorty_service_characters():
 def rickandmorty_service_episodes():
     return AllRickAndMortyService.data_episode(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_episode(),
                                                AllRickAndMortyService.num_page_episode())
+
+
+@app.route('/favourites')
+def favourites():
+    return FavoriteSong.get_favorite_song()

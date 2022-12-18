@@ -17,6 +17,8 @@ class RickAndMortyService:
             list_episode_name.append(episode_name)
         return list_episode_name
 
+
+
     @staticmethod
     def data_character(baseurl, endpoint):
         list_characters = []
@@ -34,3 +36,4 @@ class RickAndMortyService:
             }
             list_characters.append(character)
         return list_characters
+
