@@ -11,7 +11,7 @@ def home():
     message = {
         "Home": 'http://127.0.0.1:5000/',
         "Artist": 'http://127.0.0.1:5000/artist?name=',
-        "Character": 'http://127.0.0.1:5000/all_character',
+        "Character": 'http://127.0.0.1:5000/character',
         "AllCharacter": 'http://127.0.0.1:5000/all_character',
         "AllCharacter": 'http://127.0.0.1:5000/episode',
 
@@ -24,6 +24,12 @@ def spotify_service():
     name = request.args.get('name', type=str)
     return SpotifyService.get_artist_popularity(name)
 
+
+
+# SOLO USAR SI SE TIENE MUCHO TIEMPO
+@app.route('/character')
+def rickandmorty_service():
+    return RickAndMortyService.data_character(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_character())
 
 # SOLO USAR SI SE TIENE MUCHO TIEMPO
 @app.route('/all_character')
