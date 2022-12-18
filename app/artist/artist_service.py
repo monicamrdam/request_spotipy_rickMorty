@@ -1,6 +1,6 @@
 from app.artist.spotify_client import SpotifyClient
 from app.artist.artist import Artist
-from app.artist.artist_topTracks import Top_Tracks
+from app.artist.artist_topTracks import TopTracks
 
 
 class SpotifyService:

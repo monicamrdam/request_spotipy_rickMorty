@@ -35,7 +35,7 @@ class RickAndMortyService:
             r = requests.get(path)
             data_episodes = r.json()
             for j in data_episodes['results']:
-                episodes = Episode((j['name']) )
+                episodes = Episode((j['name']))
                 all_episode.append(episodes.name)
         return all_episode
 
@@ -48,23 +48,25 @@ class RickAndMortyService:
 
     @staticmethod
     def search_episode(num_url):
-        all_episode =RickAndMortyService.data_episode(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_episode(), RickAndMortyService.num_page_episode())
+        all_episode = RickAndMortyService.data_episode(RickAndMortyClient.base_url(),
+                                                       RickAndMortyClient.end_point_episode(),
+                                                       RickAndMortyService.num_page_episode())
         search_num = int(num_url)
-        return all_episode[search_num -1]
+        return all_episode[search_num - 1]
 
     @staticmethod
     def data_character(baseurl, endpoint, num_page):
-        all_characters=[]
+        all_characters = []
         for i in range(1, num_page + 1):
             path = (baseurl + endpoint + '?page=' + str(i))
             r = requests.get(path)
             data_character = r.json()
             for j in data_character['results'][:1]:
-                num_episode=RickAndMortyService.search_url_episode((j['episode']))
-                nameepisode=RickAndMortyService.search_episode(num_episode)
-                #Preguntar Alberto
-                #characters = Character((j['id']),(j['name']),(j['location']['name']),(j['episode']))
-                characters = Character((j['id']),(j['name']),(j['location']['name']),nameepisode)
+                num_episode = RickAndMortyService.search_url_episode((j['episode']))
+                nameepisode = RickAndMortyService.search_episode(num_episode)
+                # Preguntar Alberto
+                # characters = Character((j['id']),(j['name']),(j['location']['name']),(j['episode']))
+                characters = Character((j['id']), (j['name']), (j['location']['name']), nameepisode)
                 character = {
                     'id': characters.id,
                     'name': characters.name,
