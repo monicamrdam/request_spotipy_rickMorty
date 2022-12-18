@@ -21,3 +21,4 @@ class RickAndMortyClient:
     def main_path(baseurl, endpoint):
         r = requests.get(baseurl + endpoint)
         return r.json()
+

@@ -9,7 +9,10 @@ def home():
     message={
         "Home":'http://127.0.0.1:5000/',
         "Artist": 'http://127.0.0.1:5000/artist?name=',
-        "Character": 'http://127.0.0.1:5000/character',
+        "Character": 'http://127.0.0.1:5000/all_character',
+        "AllCharacter": 'http://127.0.0.1:5000/all_character',
+        "AllCharacter": 'http://127.0.0.1:5000/episode',
+
     }
     return jsonify(message)
 
@@ -20,6 +23,12 @@ def spotify_service():
     return SpotifyService.get_artist_popularity(name)
 
 
-@app.route('/character')
-def rickandmorty_service():
+#SOLO USAR SI SE TIENE MUCHO TIEMPO
+@app.route('/all_character')
+def rickandmorty_service_characters():
     return RickAndMortyService.data_character(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_character(), RickAndMortyService.num_page_character())
+
+
+@app.route('/episode')
+def rickandmorty_service_episodes():
+    return RickAndMortyService.data_episode(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_episode(), RickAndMortyService.num_page_episode())
