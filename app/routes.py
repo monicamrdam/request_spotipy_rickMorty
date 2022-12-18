@@ -4,6 +4,7 @@ from flask import jsonify
 from app.artist.artist_service import SpotifyService
 from app.character.character_service import RickAndMortyService
 from app.character.rick_and_morty_client import RickAndMortyClient
+from app.character.all_character_service import AllRickAndMortyService
 
 
 @app.route('/')
@@ -13,7 +14,7 @@ def home():
         "Artist": 'http://127.0.0.1:5000/artist?name=',
         "Character": 'http://127.0.0.1:5000/character',
         "AllCharacter": 'http://127.0.0.1:5000/all_character',
-        "AllCharacter": 'http://127.0.0.1:5000/episode',
+        "Episode": 'http://127.0.0.1:5000/episode',
 
     }
     return jsonify(message)
@@ -25,20 +26,21 @@ def spotify_service():
     return SpotifyService.get_artist_popularity(name)
 
 
-
 # SOLO USAR SI SE TIENE MUCHO TIEMPO
 @app.route('/character')
 def rickandmorty_service():
     return RickAndMortyService.data_character(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_character())
 
+
 # SOLO USAR SI SE TIENE MUCHO TIEMPO
 @app.route('/all_character')
 def rickandmorty_service_characters():
-    return RickAndMortyService.data_character(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_character(),
-                                              RickAndMortyService.num_page_character())
+    return AllRickAndMortyService.data_character(RickAndMortyClient.base_url(),
+                                                 RickAndMortyClient.end_point_character(),
+                                                 AllRickAndMortyService.num_page_character())
 
 
 @app.route('/episode')
 def rickandmorty_service_episodes():
-    return RickAndMortyService.data_episode(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_episode(),
-                                            RickAndMortyService.num_page_episode())
+    return AllRickAndMortyService.data_episode(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_episode(),
+                                               AllRickAndMortyService.num_page_episode())

@@ -4,7 +4,7 @@ from app.character.rick_and_morty_client import RickAndMortyClient
 from app.character.character import Episode, Character
 
 
-class RickAndMortyService:
+class AllRickAndMortyService:
     def __init__(self):
         pass
 
@@ -48,9 +48,9 @@ class RickAndMortyService:
 
     @staticmethod
     def search_episode(num_url):
-        all_episode = RickAndMortyService.data_episode(RickAndMortyClient.base_url(),
-                                                       RickAndMortyClient.end_point_episode(),
-                                                       RickAndMortyService.num_page_episode())
+        all_episode = AllRickAndMortyService.data_episode(RickAndMortyClient.base_url(),
+                                                          RickAndMortyClient.end_point_episode(),
+                                                          AllRickAndMortyService.num_page_episode())
         search_num = int(num_url)
         return all_episode[search_num - 1]
 
@@ -62,17 +62,16 @@ class RickAndMortyService:
             r = requests.get(path)
             data_character = r.json()
             for j in data_character['results'][:1]:
-                num_episode = RickAndMortyService.search_url_episode((j['episode']))
-                nameepisode = RickAndMortyService.search_episode(num_episode)
+                num_episode = AllRickAndMortyService.search_url_episode((j['episode']))
+                name_episode = AllRickAndMortyService.search_episode(num_episode)
                 # Preguntar Alberto
                 # characters = Character((j['id']),(j['name']),(j['location']['name']),(j['episode']))
-                characters = Character((j['id']), (j['name']), (j['location']['name']), nameepisode)
+                characters = Character((j['id']), (j['name']), (j['location']['name']), name_episode)
                 character = {
                     'id': characters.id,
                     'name': characters.name,
                     'location': characters.location,
                     'episode': characters.episode,
                 }
-                print(character)
                 all_characters.append(character)
         return all_characters
