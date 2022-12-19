@@ -3,6 +3,7 @@ from app import app
 from flask import jsonify
 from app.all_character.all_character_service import AllRickAndMortyService
 
+
 @app.route('/')
 def home():
     message = {
@@ -17,18 +18,7 @@ def home():
     return jsonify(message)
 
 
-
-# SOLO USAR SI SE TIENE MUCHO TIEMPO
-@app.route('/all_character')
-def rickandmorty_service_characters():
-    return AllRickAndMortyService.data_character(RickAndMortyClient.base_url(),
-                                                 RickAndMortyClient.end_point_character(),
-                                                 AllRickAndMortyService.num_page_character())
-
-
 @app.route('/episode')
 def rickandmorty_service_episodes():
     return AllRickAndMortyService.data_episode(RickAndMortyClient.base_url(), RickAndMortyClient.end_point_episode(),
                                                AllRickAndMortyService.num_page_episode())
-
-
