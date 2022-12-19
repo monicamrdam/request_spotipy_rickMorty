@@ -26,7 +26,7 @@ class RickAndMortyService:
         r = requests.get(path)
         data_character = r.json()
         for j in data_character['results']:
-            characters = Character((j['id']),(j['name']),(j['location']['name']),(j['episode']))
+            characters = Character((j['id']), (j['name']),(j['location']['name']),(j['episode']))
             list_episode = RickAndMortyService.get_episode(characters.episode)
             character = {
                 'id': characters.id,
