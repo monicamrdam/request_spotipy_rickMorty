@@ -10,7 +10,7 @@ class SpotifyClient:
     @staticmethod
     def authorization():
         client_id = Config.CLIENT_ID
-        client_secret = Config.CLIENTE_SECRET
+        client_secret = Config.CLIENT_SECRET
 
         auth_url = 'https://accounts.spotify.com/api/token'
         data = {

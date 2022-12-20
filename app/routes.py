@@ -8,12 +8,12 @@ from app.character.rick_and_morty_client import RickAndMortyClient
 @app.route('/')
 def home():
     message = {
-        "Home": 'http://127.0.0.1:5000/',
-        "Artist": 'http://127.0.0.1:5000/artist?name=',
-        "Character": 'http://127.0.0.1:5000/character',
-        "AllCharacter": 'http://127.0.0.1:5000/all_character',
-        "Episode": 'http://127.0.0.1:5000/episode',
-        "Favourites": 'http://127.0.0.1:5000/favourites',
+        "Home": 'http://127.0.0.1:3000/',
+        "Artist": 'http://127.0.0.1:3000/artist?name=',
+        "Character": 'http://127.0.0.1:3000/character',
+        "AllCharacter": 'http://127.0.0.1:3000/all_character',
+        "Episode": 'http://127.0.0.1:3000/episode',
+        "Favourites": 'http://127.0.0.1:3000/favourites',
 
     }
     return jsonify(message)

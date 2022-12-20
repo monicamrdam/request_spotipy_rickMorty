@@ -1,10 +1,11 @@
 import unittest
 import requests
+from config import Config
 
 class TestAPI(unittest.TestCase):
 
-    url_estopa = "http://127.0.0.1:5000/artist?name=estopa"
-    url_aerosmith = "http://127.0.0.1:5000/artist?name=aerosmith"
+    url_estopa = Config.URL_PORT +"artist?name=estopa"
+    url_aerosmith = Config.URL_PORT +"artist?name=aerosmith"
 
     estopa_data = {"name": "Estopa",
                    "popularTracks": [{"name": "Diablo", "popularity": 66},

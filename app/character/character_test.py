@@ -1,9 +1,10 @@
 import unittest
 import requests
+from config import Config
 
 
 class TestAPI(unittest.TestCase):
-    URL_CHARACTER = "http://127.0.0.1:5000/character"
+    URL_CHARACTER = Config.URL_PORT + "character"
 
     first_data = {
         "episode": ["Pilot", "Lawnmower Dog", "Anatomy Park", "M. Night Shaym-Aliens!", "Meeseeks and Destroy",

@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 load_dotenv() #Cargar todo el contenido de .env en variables de entorno
 
 class Config:
-    SERVER_NAME ='127.0.0.1:5000'
-    DEBUG= True
+
+    URL_PORT='http://127.0.0.1:3000/'
 
     URL_Search = 'https://api.spotify.com/v1/search'
     URL_Artist= 'https://api.spotify.com/v1/artists'
 
     CLIENT_ID = os.environ.get('CLIENT_ID', "") # O devuelve la variable de entorno o la cadena vacia
-    CLIENTE_SECRET = os.environ.get('CLIENTE_SECRET', "")  # O devuelve la variable de entorno o la cadena vacia
+    CLIENT_SECRET = os.environ.get('CLIENT_SECRET', "")  # O devuelve la variable de entorno o la cadena vacia
