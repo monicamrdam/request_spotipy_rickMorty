@@ -13,3 +13,6 @@ class Config:
 
     CLIENT_ID = os.environ.get('CLIENT_ID', "")  # O devuelve la variable de entorno o la cadena vacia
     CLIENT_SECRET = os.environ.get('CLIENT_SECRET', "")  # O devuelve la variable de entorno o la cadena vacia
+
+
+    DATABASE_URI = os.environ.get('DB_PATH') or os.path.join(basedir, 'app/db_RAndM_Spotify.db')
