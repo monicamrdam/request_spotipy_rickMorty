@@ -2,7 +2,7 @@ import random
 from app.RickAndMortyPopulator.character.character_service import RickAndMortyService
 from app.RickAndMortyPopulator.character.character_client import RickAndMortyClient
 from app.RickAndMortySpotify.artist.artist_service import SpotifyService
-
+from app.RickAndMortyPopulator.character.character_repository import CharacterRepository
 
 class FavoriteSong:
     def __init__(self):
