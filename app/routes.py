@@ -4,6 +4,7 @@ from app.db_RAndM_Spotify_service import DbRickAndMortySpotify
 
 @app.route('/')
 def home():
+    DbRickAndMortySpotify.create_table_characters()
     DbRickAndMortySpotify.create_table_episode()
     message = {
         "Home": 'http://127.0.0.1:3000/',
