@@ -1,5 +1,4 @@
-import unittest
-import requests
+import unittest, requests
 from config import Config
 
 class TestAPI(unittest.TestCase):

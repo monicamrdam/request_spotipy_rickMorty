@@ -1,6 +1,5 @@
-from app.RickAndMortySpotify.artist.spotify_client import SpotifyClient
-from app.RickAndMortySpotify.artist.artist import Artist
-from app.RickAndMortySpotify.artist.artist_topTracks import TopTracks
+from app.RickAndMortySpotify.artist.artist_client import SpotifyClient
+from app.RickAndMortySpotify.artist.artist import Artist, TopTracks
 
 
 class SpotifyService:
