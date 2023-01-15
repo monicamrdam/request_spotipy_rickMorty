@@ -17,15 +17,6 @@ class SpotifyService:
         else:
             for track in data_top_track['tracks'][:5]:
                 tracks_data = TopTracks(track['name'], track['popularity'])
-                artist_track = {
-                    'name': tracks_data.name,
-                    'popularity': tracks_data.popularity,
-                }
-                all_tracks.append(artist_track)
-            data_artist = Artist(data_artist['name'], data_artist['popularity'])
-            artist = {
-                'name': data_artist.name,
-                'popularity': data_artist.popularity,
-                'popularTracks': all_tracks
-            }
-            return artist
+                all_tracks.append(tracks_data.serialize())
+            data_artist = Artist(data_artist['name'], data_artist['popularity'], all_tracks)
+            return  data_artist.serialize()
