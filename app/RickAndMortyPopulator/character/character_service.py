@@ -1,6 +1,6 @@
 import requests
-from app.character.rick_and_morty_client import RickAndMortyClient
-from app.character.character import Character
+from app.RickAndMortyPopulator.character.rick_and_morty_client import RickAndMortyClient
+from app.RickAndMortyPopulator.character.character import Character
 
 
 class RickAndMortyService:
@@ -27,12 +27,12 @@ class RickAndMortyService:
         data_character = r.json()
         for j in data_character['results']:
             characters = Character((j['id']), (j['name']),(j['location']['name']),(j['episode']))
-            list_episode = RickAndMortyService.get_episode(characters.episode)
+           # list_episode = RickAndMortyService.get_episode(characters.episode)
             character = {
                 'id': characters.id,
                 'name': characters.name,
                 'location': characters.location,
-                'episode': list_episode,
+                'episode': [],
             }
             list_characters.append(character)
         return list_characters

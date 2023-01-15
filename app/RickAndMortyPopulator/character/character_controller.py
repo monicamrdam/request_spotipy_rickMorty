@@ -1,6 +1,6 @@
 from flask import request, Blueprint
-from app.character.character_service import RickAndMortyService
-from app.character.rick_and_morty_client import RickAndMortyClient
+from app.RickAndMortyPopulator.character.character_service import RickAndMortyService
+from app.RickAndMortyPopulator.character.rick_and_morty_client import RickAndMortyClient
 
 
 character_page = Blueprint('character_page', __name__)

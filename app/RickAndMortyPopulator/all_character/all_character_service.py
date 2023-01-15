@@ -1,7 +1,7 @@
 import requests
 import re
-from app.character.rick_and_morty_client import RickAndMortyClient
-from app.character.character import Episode, Character
+from app.RickAndMortyPopulator.character.rick_and_morty_client import RickAndMortyClient
+from app.RickAndMortyPopulator.character.character import Episode, Character
 
 
 class AllRickAndMortyService:

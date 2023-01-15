@@ -33,8 +33,11 @@ class SpotifyClient:
         featured_playlists_url = ''.join([base_url, featured_playlists_endpoint])
         print(featured_playlists_url)
         response = requests.get(featured_playlists_url, headers=SpotifyClient.authorization())
-        id_artist = response.json()['artists']['items'][0]['id']
-        return id_artist
+        if (len(response.json()['artists']['items'])) == 0:
+            return str(0)
+        else:
+            id_artist = response.json()['artists']['items'][0]['id']
+            return id_artist
 
     @staticmethod
     def url_artist(name_artist):

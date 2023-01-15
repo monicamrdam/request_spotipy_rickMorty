@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.favourites.favourites_service import FavoriteSong
+from app.RickAndMortySpotify.favourites.favourites_service import FavoriteSong
 
 favourite_page = Blueprint('favourite_page', __name__)
 

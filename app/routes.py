@@ -1,8 +1,8 @@
 from flask import request
 from app import app
 from flask import jsonify
-from app.all_character.all_character_service import AllRickAndMortyService
-from app.character.rick_and_morty_client import RickAndMortyClient
+from app.RickAndMortyPopulator.all_character.all_character_service import AllRickAndMortyService
+from app.RickAndMortyPopulator.character.rick_and_morty_client import RickAndMortyClient
 
 
 @app.route('/')
