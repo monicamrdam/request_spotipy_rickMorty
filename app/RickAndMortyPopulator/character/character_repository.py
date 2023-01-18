@@ -21,7 +21,7 @@ class CharacterRepository:
             uuid TEXT PRIMARY KEY,
             name TEXT NOT NULL,
             location TEXT NOT NULL,
-            listepisode TEXT NOT NULL)""",
+            list_episode TEXT NOT NULL)""",
         ]
         db = CharacterRepository.get_db()
         cursor = db.cursor()
@@ -34,9 +34,9 @@ class CharacterRepository:
         return uuid
 
     @staticmethod
-    def insert_character(uuid, name, location, listepisode):
+    def insert_character(uuid, name, location, list_episode):
         db = CharacterRepository.get_db()
         cursor = db.cursor()
-        statement = "INSERT INTO characters (uuid, name, location,listepisode) VALUES (?,?,?,?)"
-        cursor.execute(statement, [uuid, name, location, listepisode])
+        statement = "INSERT INTO characters (uuid, name, location,list_episode) VALUES (?,?,?,?)"
+        cursor.execute(statement, [uuid, name, location, list_episode])
         db.commit()

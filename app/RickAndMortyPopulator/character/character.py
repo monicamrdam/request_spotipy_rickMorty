@@ -1,13 +1,13 @@
 class Character:
-    def __init__(self, uuid, name, location, episode:[]):
+    def __init__(self, uuid, name, location, episode: []):
         self.uuid = uuid
         self.name = name
         self.location = location
         self.episode = episode
 
     def __str__(self):
-        return "Uuid{},Name: {}, Location{}, Episode{}".format(
-            self.uuid,self.name, self.location, self.episode
+        return "Uuid {},Name {}, Location {}, Episode {}".format(
+            self.uuid, self.name, self.location, self.episode
         )
 
     def serialize(self):
