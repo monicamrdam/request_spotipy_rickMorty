@@ -75,7 +75,7 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(resp.status_code, 200, "Se conecta al servidor")
         self.assertEqual(len(response_json), 20, "Hay 20 characters")
         self.assertEqual(response_json[0], self.first_data, "El primero es Rick")
-        self.assertEqual(response_json[0], self.last_data_data, "El ultimo es Ants in my Eyes Johnson")
+        self.assertEqual(response_json[0], self.last_data, "El ultimo es Ants in my Eyes Johnson")
 
 
 if __name__ == "__main__":

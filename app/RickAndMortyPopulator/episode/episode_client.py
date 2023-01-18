@@ -2,6 +2,7 @@ import requests
 import sqlite3 as sql
 from config import Config
 
+
 class EpisodeClient:
     def __init__(self):
         pass
