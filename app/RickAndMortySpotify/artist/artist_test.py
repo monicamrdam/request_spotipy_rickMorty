@@ -1,25 +1,63 @@
 import unittest, requests
-from config import Config
+
 
 class TestAPI(unittest.TestCase):
+    url_estopa = "http://127.0.0.1:3000/artist?name=estopa"
+    url_aerosmith = "http://127.0.0.1:3000/artist?name=aerosmith"
 
-    url_estopa = Config.URL_PORT +"artist?name=estopa"
-    url_aerosmith = Config.URL_PORT +"artist?name=aerosmith"
+    estopa_data = {
+        "Name": "Estopa",
+        "PopularTracks": [
+            {
+                "Name song": "Diablo",
+                "Popularity": 68
+            },
+            {
+                "Name song": "Como Camar\u00f3n",
+                "Popularity": 68
+            },
+            {
+                "Name song": "Tu Calorro",
+                "Popularity": 67
+            },
+            {
+                "Name song": "Ay Haiti!",
+                "Popularity": 65
+            },
+            {
+                "Name song": "Por la Raja de Tu Falda",
+                "Popularity": 65
+            }
+        ],
+        "Popularity": 70
+    }
 
-    estopa_data = {"name": "Estopa",
-                   "popularTracks": [{"name": "Diablo", "popularity": 66},
-                                     {"name": "Como Camar\u00f3n", "popularity": 67},
-                                     {"name": "Tu Calorro", "popularity": 66}, {"name": "Ay Haiti!", "popularity": 64},
-                                     {"name": "Vino Tinto", "popularity": 63}],
-                   "popularity": 70}
-
-    aerosmith_data = {"name": "Aerosmith", "popularTracks": [{"name": "Dream On", "popularity": 87},
-                                        {"name": "I Don't Want to Miss a Thing - From \"Armageddon\" Soundtrack",
-                                         "popularity": 76}, {"name": "Crazy", "popularity": 75},
-                                        {"name": "Walk This Way", "popularity": 75},
-                                        {"name": "Sweet Emotion", "popularity": 73}], "popularity": 77}
-
-
+    aerosmith_data = {
+        "Name": "Aerosmith",
+        "PopularTracks": [
+            {
+                "Name song": "Dream On",
+                "Popularity": 76
+            },
+            {
+                "Name song": "I Don't Wanna To Miss A Thing - From \"Armageddon\" Soundtrack",
+                "Popularity": 65
+            },
+            {
+                "Name song": "Crazy",
+                "Popularity": 76
+            },
+            {
+                "Name song": "Walk This Way",
+                "Popularity": 63
+            },
+            {
+                "Name song": "Cryin'",
+                "Popularity": 73
+            }
+        ],
+        "Popularity": 78
+    }
 
     def test_estopa(self):
         resp = requests.get(self.url_estopa)
@@ -27,15 +65,14 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(resp.status_code, 200, "Se conecta al servidor")
         self.assertEqual(response_json, self.estopa_data, "Datos de estopa")
 
-
     def test_aerosmith(self):
         resp = requests.get(self.url_aerosmith)
         response_json = resp.json()
         self.assertEqual(resp.status_code, 200, "Se conecta al servidor")
-        self.assertEqual(response_json[0], self.aerosmith_data, "Datos de Aerosmith")
+        self.assertEqual(response_json, self.aerosmith_data, "Datos de Aerosmith")
 
 
 if __name__ == "__main__":
     tester = TestAPI()
     tester.test_estopa()
-    #tester.test_aerosmith()
+    tester.test_aerosmith()
