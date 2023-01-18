@@ -1,9 +1,8 @@
 import unittest, requests
-from config import Config
 
 
 class TestAPI(unittest.TestCase):
-    url_favourites = Config.URL_PORT + "favourites"
+    url_favourites = "http://127.0.0.1:3000/favourites"
 
     favourites_data = [
         {

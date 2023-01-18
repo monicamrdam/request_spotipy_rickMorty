@@ -1,8 +1,8 @@
-import random
 from app.RickAndMortyPopulator.character.character_service import RickAndMortyService
 from app.RickAndMortyPopulator.character.character_client import RickAndMortyClient
 from app.RickAndMortySpotify.artist.artist_service import SpotifyService
 from app.RickAndMortyPopulator.character.character_repository import CharacterRepository
+
 
 class FavoriteSong:
     def __init__(self):
@@ -14,7 +14,7 @@ class FavoriteSong:
         response = RickAndMortyService.data_character(RickAndMortyClient.base_url(),
                                                       RickAndMortyClient.end_point_character())
         for i in response:
-            list_favorite.append(SpotifyService.get_artist_popularity((i['name'])))
+            list_favorite.append(SpotifyService.get_artist_popularity((i['Name'])))
         return list_favorite
 
     @staticmethod
